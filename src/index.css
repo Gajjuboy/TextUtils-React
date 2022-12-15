@@ -1,0 +1,12 @@
+.previewText {
+    border: 2px solid black;
+  }
+
+.previewText h2{
+    text-decoration: dashed underline ;
+}
+
+.buttons {
+  flex-wrap: wrap;
+  gap: 3px;
+}
