@@ -40,6 +40,11 @@ export default function Navbar(props) {
                 {props.speechtotext}
               </Link>
             </li>
+            {/* <li className="nav-item">
+              <Link className="nav-link" to="/thapaspeechrecognition">
+                {props.speechRecognitionHeading}
+              </Link>
+            </li> */}
           </ul>
           {/* <div className={`form-check form-switch text-${props.classTextColor} mx-3`}>
               <input className="form-check-input" onClick={props.toggleMode} onChange={props.DarkModeColor} type="checkbox" role="switch" aria-checked id="flexSwitchCheckDefault"/>
