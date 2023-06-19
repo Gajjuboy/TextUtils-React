@@ -25,9 +25,9 @@ function TextForm(props) {
   };
 
   const handleCopy = () => {
-    let copiedText = document.getElementById("exampleFormControlTextarea1")
-    copiedText.select();
-    navigator.clipboard.writeText(copiedText.value);
+    // let copiedText = document.getElementById("exampleFormControlTextarea1")
+    // copiedText.select();
+    navigator.clipboard.writeText(text);
     props.showAlert("Copied to clipboard", "success", "#check-circle-fill", "success:");
   }
 
@@ -53,11 +53,11 @@ function TextForm(props) {
           <textarea className="form-control" id="exampleFormControlTextarea1" style={{backgroundColor: props.bgColor, color: props.textColor}} placeholder="Enter your Text:" value={text} onChange={handleOnChange} rows="8"></textarea>
         </div>
         <div className="buttons d-flex">
-        <button className="btn btn-primary" onClick={handleUpClick}>Convert to Uppercase</button>
-        <button className="btn btn-primary" onClick={handleLowClick}>Convert to Lowercase</button>
-        <button className="btn btn-primary" onClick={handleClearClick}>Clear Text</button>
-        <button className="btn btn-primary" onClick={handleCopy}>Copy Text</button>
-        <button className="btn btn-primary" onClick={handleExtraSpaces}>Remove Extra Spaces</button>
+        <button className="btn btn-primary" disabled = {text.length===0} onClick={handleUpClick}>Convert to Uppercase</button>
+        <button className="btn btn-primary" disabled = {text.length===0} onClick={handleLowClick}>Convert to Lowercase</button>
+        <button className="btn btn-primary" disabled = {text.length===0} onClick={handleClearClick}>Clear Text</button>
+        <button className="btn btn-primary" disabled = {text.length===0} onClick={handleCopy}>Copy Text</button>
+        <button className="btn btn-primary" disabled = {text.length===0} onClick={handleExtraSpaces}>Remove Extra Spaces</button>
         </div>
       </div>
 
