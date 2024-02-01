@@ -1,44 +1,49 @@
-import './App.css';
-import About from './Components/About';
-import Navbar from "./Components/Navbar"; 
+import "./App.css";
+import About from "./Components/About";
+import Navbar from "./Components/Navbar";
 import TextForm from "./Components/TextForm";
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Alert from "./Components/Alert";
 import SpeechToText from "./Components/SpeechToText";
+// import { SpeedInsights } from "@vercel/speed-insights/react";
 // import ThapaSpeechRecognition from "./Components/ThapaSpeechRecognition"
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // import { useSpeechRecognition } from 'react-speech-recognition';
 
 function App() {
   /*Dark Mode State Variable */
-  const [mode, setMode] = useState('light'); // whether  dark mode is enabled or not...
+  const [mode, setMode] = useState("light"); // whether  dark mode is enabled or not...
 
   /*Color Variables */
-  let bgColor = mode==='light'?'white':'#141414';
-  let classBgColor = mode ==='light'?'light':'dark';
-  let textColor = mode ==='light'?'black':'white';
-  let classTextColor = mode==='light'?'dark':'light';
-  let borderColor = mode==='light'?'#e2e9ed':'white';
-
+  let bgColor = mode === "light" ? "white" : "#141414";
+  let classBgColor = mode === "light" ? "light" : "dark";
+  let textColor = mode === "light" ? "black" : "white";
+  let classTextColor = mode === "light" ? "dark" : "light";
+  let borderColor = mode === "light" ? "#e2e9ed" : "white";
 
   /*Dark Mode Button */
   const toggleMode = () => {
-    if (mode==='light') {
-      setMode('dark');
-      document.body.style.backgroundColor = '#141414';
-      showAlert("Dark mode has been Enabled", "success", "#check-circle-fill", "success:"); 
-    }
-    else{
-      setMode('light');
-      document.body.style.backgroundColor = 'white';
-      showAlert("Dark mode has been Disabled", "success", "#check-circle-fill", "success");
+    if (mode === "light") {
+      setMode("dark");
+      document.body.style.backgroundColor = "#141414";
+      showAlert(
+        "Dark mode has been Enabled",
+        "success",
+        "#check-circle-fill",
+        "success:"
+      );
+    } else {
+      setMode("light");
+      document.body.style.backgroundColor = "white";
+      showAlert(
+        "Dark mode has been Disabled",
+        "success",
+        "#check-circle-fill",
+        "success"
+      );
     }
     // darkModeColor();
-  }
+  };
 
   // const darkModeColor = () => {
   //   let black = document.getElementById("flexSwitchCheckDefault");
@@ -52,25 +57,24 @@ function App() {
   //   }
   // }
 
-
   /*Alert State Variable*/
   const [alert, setAlert] = useState(null);
   /*Alert show method */
   const showAlert = (message, type, icon, iconType) => {
     // if(callback){
-      
+
     // }else{
     setAlert({
       msg: message,
       type: type,
-      icon: icon, /* use "#info-fill" ,"check-circle-fill" for success, "#exclamation-triangle-fill" for warning alert, "#exclamation-triangle-fill" for danger,  */
-      iconType: iconType 
-    })
-      setTimeout(() => {
-        setAlert(null)
-      }, 1500);
+      icon: icon /* use "#info-fill" ,"check-circle-fill" for success, "#exclamation-triangle-fill" for warning alert, "#exclamation-triangle-fill" for danger,  */,
+      iconType: iconType,
+    });
+    setTimeout(() => {
+      setAlert(null);
+    }, 1500);
     // }
-  }
+  };
 
   // const {listening} = useSpeechRecognition()
 
@@ -82,22 +86,73 @@ function App() {
   /* Main DOM */
   return (
     <>
-    <Router>
-      <Navbar navbarBrand='TextUtils' aboutText='About US' speechtotext='Speech To Text Converter' speechRecognitionHeading='Thapa Speech Recognition' mode={mode} toggleMode={toggleMode} bgColor={bgColor} classBgColor={classBgColor} classTextColor={classTextColor} textColor={textColor} />
-      <Alert alert={alert} /> 
-      <div className='container my-3'>
-        <Routes>
-            <Route path='about' element={<About bgColor={bgColor} classBgColor={classBgColor} classTextColor={classTextColor} textColor={textColor} borderColor={borderColor} showAlert={showAlert}/> } />
-              
+      <Router>
+        <Navbar
+          navbarBrand="TextUtils"
+          aboutText="About US"
+          speechtotext="Speech To Text Converter"
+          speechRecognitionHeading="Thapa Speech Recognition"
+          mode={mode}
+          toggleMode={toggleMode}
+          bgColor={bgColor}
+          classBgColor={classBgColor}
+          classTextColor={classTextColor}
+          textColor={textColor}
+        />
+        <Alert alert={alert} />
+        <div className="container my-3">
+          <Routes>
+            <Route
+              path="about"
+              element={
+                <About
+                  bgColor={bgColor}
+                  classBgColor={classBgColor}
+                  classTextColor={classTextColor}
+                  textColor={textColor}
+                  borderColor={borderColor}
+                  showAlert={showAlert}
+                />
+              }
+            />
 
-            <Route path='/' element={<TextForm Heading="Enter the text to analyze:" bgColor={bgColor} classBgColor={classBgColor} classTextColor={classTextColor} textColor={textColor} borderColor={borderColor} showAlert={showAlert}/>} />
-            <Route path='SpeechToText' element={<SpeechToText Heading="Speak to convert into text:" bgColor={bgColor} classBgColor={classBgColor} classTextColor={classTextColor} textColor={textColor} borderColor={borderColor} showAlert={showAlert}/>} />
+            <Route
+              path="/"
+              element={
+                <TextForm
+                  Heading="Enter the text to analyze:"
+                  bgColor={bgColor}
+                  classBgColor={classBgColor}
+                  classTextColor={classTextColor}
+                  textColor={textColor}
+                  borderColor={borderColor}
+                  showAlert={showAlert}
+                />
+              }
+            />
+            <Route
+              path="SpeechToText"
+              element={
+                <SpeechToText
+                  Heading="Speak to convert into text:"
+                  bgColor={bgColor}
+                  classBgColor={classBgColor}
+                  classTextColor={classTextColor}
+                  textColor={textColor}
+                  borderColor={borderColor}
+                  showAlert={showAlert}
+                />
+              }
+            />
             {/* <Route path='ThapaSpeechRecognition' element={<ThapaSpeechRecognition />} /> */}
           </Routes>
           {/* <TextForm Heading="Enter the text to analyze:" bgColor={bgColor} classBgColor={classBgColor} classTextColor={classTextColor} textColor={textColor} borderColor={borderColor} showAlert={showAlert}/> */}
-      </div>
-    </Router>
-</>
+        </div>
+        {/* <div>
+          <SpeedInsights />
+        </div> */}
+      </Router>
+    </>
   );
 }
 
